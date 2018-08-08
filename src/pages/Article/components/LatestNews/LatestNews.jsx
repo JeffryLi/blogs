@@ -2,57 +2,8 @@ import React, { Component } from 'react';
 import IceContainer from '@icedesign/container';
 import { Grid } from '@icedesign/base';
 import './LatestNews.scss';
-
-const dataSource = {
-  articles: [
-    {
-      title: '这里是文章的标题1',
-      time: '2018-03-31',
-    },
-    {
-      title: '这里是文章的标题2',
-      time: '2018-02-02',
-    },
-    {
-      title: '这里是文章的标题3',
-      time: '2018-01-22',
-    },
-    {
-      title: '这里是文章的标题4',
-      time: '2018-02-02',
-    },
-    {
-      title: '这里是文章的标题5',
-      time: '2018-01-22',
-    },
-    {
-      title: '这里是文章的标题6',
-      time: '2018-02-02',
-    },
-  ],
-  comments: [
-    {
-      title: '这里是最新的评论1',
-      time: '2018-02-26',
-      num: '18',
-    },
-    {
-      title: '这里是最新的评论2',
-      time: '2018-01-22',
-      num: '22',
-    },
-    {
-      title: '这里是最新的评论3',
-      time: '2018-01-18',
-      num: '36',
-    },
-    {
-      title: '这里是最新的评论4',
-      time: '2018-01-18',
-      num: '29',
-    },
-  ],
-};
+import axiosInit  from '../../../../utils/httpConfig/axiosWrap';
+const axios = axiosInit();
 
 const { Row, Col } = Grid;
 
@@ -65,7 +16,23 @@ export default class LatestNews extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      dataSource : {
+        articles: [
+          {
+            title: '无文章',
+            time: '',
+          },
+        ],
+        comments: [
+          {
+            title: '无评论',
+            time: '',
+            num: '0',
+          }
+        ],
+      }
+    };
   }
 
   render() {
@@ -81,7 +48,7 @@ export default class LatestNews extends Component {
                 </a>
               </h3>
               <div style={styles.items}>
-                {dataSource.articles.map((item, index) => {
+                {this.state.dataSource.articles.map((item, index) => {
                   return (
                     <a
                       className="link"
@@ -106,7 +73,7 @@ export default class LatestNews extends Component {
                 </a>
               </h3>
               <div style={styles.items}>
-                {dataSource.comments.map((item, index) => {
+                {this.state.dataSource.comments.map((item, index) => {
                   return (
                     <a
                       className="link"

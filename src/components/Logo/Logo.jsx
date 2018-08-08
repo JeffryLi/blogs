@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const LIGHT =
   'https://gw.alicdn.com/tfs/TB1KmB6nntYBeNjy1XdXXXXyVXa-224-60.png';
 const DARK =
-  'http://www.jeffry.online:4300/image/logo.png';
+  'http://www.jeffry.online/image/logo.png';
 
 export default class Logo extends Component {
   render() {

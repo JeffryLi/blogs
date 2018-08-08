@@ -6,6 +6,10 @@ import './Header.scss';
 
 const MENUS = [
   {
+    name: '首页',
+    path: '/#/',
+  },
+  {
     name: '文章',
     path: '/#/article',
   },

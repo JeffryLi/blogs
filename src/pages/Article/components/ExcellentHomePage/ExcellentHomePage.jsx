@@ -19,7 +19,7 @@ export default class ExcellentHomePage extends Component {
             bottom: 0,
             backgroundSize: 'cover',
             backgroundImage:
-              'url(https://gw.alicdn.com/tfs/TB1oJNKsFOWBuNjy0FiXXXFxVXa-1900-1010.svg)',
+              'url(http://www.jeffry.online/image/background-img.jpg)',
             backgroundPosition: 'center',
           }}
         />

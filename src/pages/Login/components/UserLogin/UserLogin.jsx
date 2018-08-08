@@ -8,12 +8,14 @@ import {
 } from '@icedesign/form-binder';
 import IceIcon from '@icedesign/icon';
 import './UserLogin.scss';
+import axiosInit from '../../../../utils/httpConfig/axiosWrap';
+const axios = axiosInit();
 
 const { Row, Col } = Grid;
 
 // 寻找背景图片可以从 https://unsplash.com/ 寻找
 const backgroundImage =
-  'http://www.jeffry.online:4300/image/cassie-boca-293379-unsplash.jpg';
+  'http://www.jeffry.online/image/background-img.jpg';
 
 export default class UserLogin extends Component {
   static displayName = 'UserLogin';
@@ -46,8 +48,21 @@ export default class UserLogin extends Component {
         console.log('errors', errors);
         return;
       }
-      console.log('values:', values);
-      Feedback.toast.success('登录成功');
+      axios({
+        method: 'post',
+        url: 'server/login',
+        data: {
+          username: values.account,
+          password: values.password
+        }
+      }
+      ).then(function(response) {
+        console.log('values:', values);
+        Feedback.toast.success('登录成功');
+      })
+        .catch(function(error) {
+          console.log(error);
+        });
       // 登录成功后可通过 hashHistory.push('/') 跳转首页
     });
   };
